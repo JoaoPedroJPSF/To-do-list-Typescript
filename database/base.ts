@@ -1,24 +1,22 @@
 import { model, Schema, connect } from 'mongoose'
 import dotenv from 'dotenv'
+import {ITask} from  './taskInterface'
 dotenv.config({})
 
+
+//Gets data from .env files
 const MONGO_URI = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.piaf2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
 
-
-interface Task {
-  description: string
-}
-
-const TaskSchema = new Schema<Task>({
+const TaskSchema = new Schema<ITask>({
   description:{
     type: String,
     required: true
   }
 })
 
-const TaskModel = model<Task>("Task", TaskSchema)
+const TaskModel = model<ITask>("Task", TaskSchema)
 
-
+//Creates class that connects to the Database
 class MongooseService{
   private mongooseOptions = {
     useNewUrlParser: true,
@@ -32,6 +30,11 @@ class MongooseService{
     this.connectToDataBase
   }
 
+  modelling(task: ITask){
+    console.log(task)
+    return new TaskModel(task).save()
+  }
+
   async connectToDataBase():Promise<void>{
     await connect(MONGO_URI)
     return console.log('Database Connected')
@@ -39,10 +42,5 @@ class MongooseService{
 
 }
 
-
-//async function run(): Promise<void>{
-//  await connect(MONGO_URI)
-//  return console.log('Connected')
-//}
 
 export default new MongooseService()
