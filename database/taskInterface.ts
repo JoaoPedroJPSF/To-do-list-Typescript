@@ -1,3 +1,6 @@
-export interface ITask{
-  description: String
+import { Document } from 'mongoose'
+
+export interface ITask extends Document {
+  description: String,
+  finished: Boolean
 }
