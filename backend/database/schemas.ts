@@ -10,7 +10,7 @@ const TaskSchema = new Schema<ITask>({
     type: Boolean,
     default: false
   }
-})
+}) 
 
 const TaskModel = model<ITask>("Task", TaskSchema)
 

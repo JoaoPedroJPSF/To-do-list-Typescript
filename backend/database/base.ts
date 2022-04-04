@@ -10,7 +10,7 @@ const MONGO_URI = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@clu
 
 //Creates class that connects to the Database
 class MongooseService{
-  private mongooseOptions = {
+  private mongooseOptions = { 
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,

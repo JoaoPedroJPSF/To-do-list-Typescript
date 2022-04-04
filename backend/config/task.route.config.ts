@@ -7,7 +7,7 @@ import TaskController from '../controllers/taskController'
 const app: Express = express()
 const application = app.use(express.urlencoded({extended: true}))
 app.use(express.json())
-
+ 
 export class TaskRoutes extends RouteConfig {
   constructor(app: Application){
     super(app, 'TaskRoutes')

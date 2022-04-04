@@ -9,7 +9,7 @@ export abstract class RouteConfig {
     this.name = name
     this.configureRoutes()
   }
-
+ 
   getName(){
     return this.name
   }
